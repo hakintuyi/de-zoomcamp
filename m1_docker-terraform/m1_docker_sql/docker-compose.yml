@@ -1,0 +1,25 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: pg_database
+    restart: always
+    environment:
+      - POSTGRES_USER=agent
+      - POSTGRES_PASSWORD=password1
+      - POSTGRES_DB=ny_taxi2019
+    ports:
+      - 5432:5432
+    volumes:
+      - ./ny_taxi2019_pg-data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pg_admin
+    restart: always
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@domain.com
+      - PGADMIN_DEFAULT_PASSWORD=root
+    volumes:
+      - ./pgadmin-data:/var/lib/pgadmin
+    ports:
+      - 8080:80
