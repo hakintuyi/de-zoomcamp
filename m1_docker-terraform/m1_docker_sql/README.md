@@ -9,7 +9,9 @@ Downloading the data
 ```bash
 wget https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-09.csv.gz
 ```
+```bash
 
+```
 ### Running Postgres with Docker
 
 #### Windows
@@ -46,13 +48,25 @@ pgcli -h localhost -p 5432 -u agent -d ny_taxi2019
 
 ### pgAdmin
 
-Running pgAdmin
+Running pgAdmin (On Windows)
 
 ```bash
 docker run -it \
   -e PGADMIN_DEFAULT_EMAIL="admin@admin.com" \
   -e PGADMIN_DEFAULT_PASSWORD="root" \
   -p 8080:80 \
+  dpage/pgadmin4
+```
+
+Running pgAdmin (On linux)
+
+> Note: refer to this [article](https://www.pgadmin.org/docs/pgadmin4/latest/container_deployment.html#mapped-files-and-directories) for full details on mapping directories.
+
+```bash
+docker run -it \
+  -e PGADMIN_DEFAULT_EMAIL="admin@admin.com" \
+  -e PGADMIN_DEFAULT_PASSWORD="root" \
+  -p 5050:80 \
   dpage/pgadmin4
 ```
 
