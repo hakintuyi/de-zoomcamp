@@ -1,4 +1,8 @@
-# Mage Zoomcamp
+# Workflow Orchestration
+
+### DATA Loader Block
+
+```bash
 import io
 import pandas as pd
 import requests
@@ -55,10 +59,11 @@ def test_output(output, *args) -> None:
     Template code for testing the output of the block.
     """
     assert output is not None, 'The output is undefined'
+```
 
+### Transformation Block
 
-
-
+```bash
 if 'transformer' not in globals():
     from mage_ai.data_preparation.decorators import transformer
 if 'test' not in globals():
@@ -80,6 +85,5 @@ def test_output(output, *args) -> None:
     Template code for testing the output of the block.
     """
     assert output is not None, 'The output is undefined'
-
 
 
