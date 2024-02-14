@@ -1,1 +1,7 @@
-Data Warehouse
+##Data Warehouse
+CREATE OR REPLACE EXTERNAL TABLE `dtc-de-414207.ny_taxi_tripdata.green_trips_nonpartition`
+OPTIONS (
+  format = 'PARQUET',
+  uris = ['gs://ny_data-trip/dreen_tripdata_2022-*.parquet']
+);
+
