@@ -5,3 +5,18 @@ OPTIONS (
   uris = ['gs://ny_data-trip/dreen_tripdata_2022-*.parquet']
 );
 
+CREATE OR REPLACE EXTERNAL TABLE `dtc-de-414207.ny_taxi_tripdata.green_trips_nonpartition`
+OPTIONS (
+  format = 'PARQUET',
+    uris = ['gs://ny_data_trip/green_tripdata_2022-*.parquet']
+    );
+
+SELECT * FROM dtc-de-414207.ny_taxi_tripdata.green_trips LIMIT 10;
+
+CREATE OR REPLACE TABLE dtc-de-414207.ny_taxi_tripdata.green_tripdata_non_partition AS
+SELECT * FROM dtc-de-414207.ny_taxi_tripdata.green_trips;
+
+CREATE OR REPLACE TABLE dtc-de-414207.ny_taxi_tripdata.green_tripdata_partitioned
+PARTITION BY
+  DATE(lpep_pickup_datetime) AS
+SELECT * FROM dtc-de-414207.ny_taxi_tripdata.green_trips;
